@@ -81,6 +81,7 @@
       </div>
     </script>
 
+    <!-- Exchange Rates Template -->
     <script id="exchange-template" type="text/x-handlebars-template">
       <h1 class="ui header">Exchange Rate</h1>
       <hr>
@@ -122,11 +123,27 @@
       </div>
     </script>
 
-
     <!-- Historical Rates Template -->
     <script id="historical-template" type="text/x-handlebars-template">
       <h1 class="ui header">Historical Rates</h1>
       <hr>
+      <form class="ui form">
+        <div class="field">
+          <label>Pick Date</label>
+          <div class="ui calendar" id="calendar">
+            <div class="ui input left icon">
+              <i class="calendar icon"></i>
+              <input type="text" placeholder="Date" id="date">
+            </div>
+          </div>
+        </div>
+        <div class="ui primary submit button">Fetch Rates</div>
+        <div class="ui error message"></div>
+      </form>
+
+      <div class="ui basic segment">
+        <div id="historical-table"></div>
+      </div>
     </script>
 
     <!-- Application Root -->
@@ -136,6 +153,7 @@
   <!-- JS Library Dependencies -->
   <script src="scripts/jquery/dist/jquery.min.js"></script>
   <script src="scripts/semantic-ui-css/semantic.min.js"></script>
+  <script src="scripts/semantic-ui-calendar/dist/calendar.min.js"></script>
   <script src="scripts/axios/dist/axios.min.js"></script>
   <script src="scripts/handlebars/dist/handlebars.min.js"></script>
   <script src="scripts/vanilla-router/dist/vanilla-router.min.js"></script>
