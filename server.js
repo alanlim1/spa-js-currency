@@ -1,5 +1,7 @@
 require('dotenv').config(); // read .env files
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const { getRates, getSymbols, } = require('./lib/fixer-service');
 const { convertCurrency } = require('./lib/free-currency-service');
 
@@ -11,6 +13,14 @@ app.use(express.static('public'));
 
 // Allow front-end access to node_modules folder
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
+
+// Parse POST data as URL encoded data
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+
+// Parse POST data as JSON
+app.use(bodyParser.json());
 
 // Express Error handler
 const errorHandler = (err, req, res) => {
